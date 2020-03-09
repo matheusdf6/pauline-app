@@ -1,0 +1,47 @@
+.navbar-top {
+    height: 70px;
+    max-width: 100%;
+    background-color: #4F3A6D;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding-top: 30px;
+    position: relative;
+}
+
+.navbar-top.with-menu {
+    height: 130px;
+}
+
+.navbar-top.with-logo {
+    height: 86px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 18px;
+    justify-content: center;
+}
+
+.navbar-top .goback {
+    position: absolute;
+    left: 16px;
+    top: 26px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.navbar-top .goback img {
+    max-width: 25px;
+}
+
+.navbar-top h2 {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+.navbar-top.with-logo h2 {
+    font-weight: normal;
+    margin: 8px 0;
+}

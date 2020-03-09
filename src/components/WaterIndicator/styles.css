@@ -1,0 +1,30 @@
+.water-indicator {
+    margin-bottom: 15px;
+    background: #f0f0f0;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.water-indicator .cups{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.water-indicator .cup-box img {
+    opacity: 0.6;
+    height: 40px;
+    width: 35px;
+}
+
+.water-indicator .cup-box.drink-active img {
+    opacity: 1;
+}
+
+.water-indicator .message {
+    font-size: 14px;
+    color: #4F3A6D;
+    text-align: center;
+}

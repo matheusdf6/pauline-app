@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+@font-face {
+  font-family: 'Circular Std Book';
+  src: url('./assets/CircularStd-Book.woff2') format('woff2'),
+      url('./assets/CircularStd-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+* {
+  margin:0;
+  padding:0;
+  outline:0;
+  box-sizing: border-box;
+}
+
+hmtl, body, #root {
+  min-height: 100vh;
+}
+
+body {
+  background: #36454f no-repeat;
+  background-size: cover;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+body, input, button {
+  font-family: 'Circular Std Book', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+body * {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+button {
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stretch {
+  align-items: stretch;
+}
+
+.column_1-of-2 {
+  width: 48%;
+}
+
+.column_1-of-3 {
+  width: 31%;
+}
+
+/* .container {
+  margin:80px auto 0;
+  max-width: 450px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+} */
+
+.card-white {
+  text-align: center;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0px 2px 6.62px rgba(0,0,0,0.08)
+}
+
+.content {
+  width: 100%;
+  background: #FFF;
+  /* margin-top: 50px; */
+  border-radius: 4px;
+  height: 100vh;
+  /* padding: 30px; */
+}
+
+.content .navbar-bottom {
+  height: 50px;
+  width: 100vw;
+  background-color: #fff;
+  box-shadow: 0px 2px 35px rgba(0,0,0,0.08);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.content .navbar-bottom a {
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.content .navbar-bottom a.selected {
+  background-color: #D5CCE1;
+}
+
+.content .navbar-bottom a img{
+  max-width: 23px;
+  opacity: 0.3;
+}
+
+.content .navbar-bottom a.selected img{
+  opacity: 1;
+}
+
+.content > p {
+  font-size: 22px;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+
+.content > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.content form label {
+  font-size: 14px;
+  color: #444;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.content form label span {
+  font-weight: normal;
+  color: #999;
+  font-size: 12px;
+}
+
+.content form input {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  height: 45px;
+  padding: 0 15px;
+  font-size: 16px;
+}
+
+.content button.btn {
+  border: 0;
+  border-radius: 2px;
+  width: 100%;
+  height: 42px;
+  padding: 0 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #f05a5b;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.content button.btn:hover {
+  background: #e14f50;
+}
