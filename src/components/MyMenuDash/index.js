@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { useHistory } from "react-router-dom";
 
 import apple from "../../assets/apple.png";
 import cooking from "../../assets/cooking.png";
@@ -10,10 +10,17 @@ import market from "../../assets/market.png";
 import "./styles.css";
 
 export default function MyMenuDash() {
+
+  const history = useHistory();
+
+  const goToPage = (page) => {
+    history.push(page);
+  }
+
   return (
     <div className="my-menu-dash card-white">
       <h3>Meu Cardápio</h3>
-      <button className="view-all">
+      <button onClick={() => goToPage("/meu-menu/cardapios")} className="view-all">
         <div className="icon-round">
           <img src={apple} alt="Ver cardápio completo"/>
         </div>
@@ -21,7 +28,7 @@ export default function MyMenuDash() {
       </button>
       <div className="row stretch">
         <div className="column_1-of-3">
-          <button className="menu-card">
+          <button onClick={() => goToPage("/meu-menu/receitas")} className="menu-card">
             <div className="icon-round">
               <img className="menu-icon" src={cooking} alt="Minhas receitas"/>
             </div>
@@ -29,7 +36,7 @@ export default function MyMenuDash() {
           </button>
         </div>
         <div className="column_1-of-3">
-          <button className="menu-card">
+          <button onClick={() => goToPage("/meu-menu/lista-de-compras")} className="menu-card">
             <div className="icon-round">
               <img className="menu-icon" src={market} alt="Lista de compras"/>
             </div>
@@ -37,7 +44,7 @@ export default function MyMenuDash() {
           </button>
         </div>
         <div className="column_1-of-3">
-          <button className="menu-card">
+          <button onClick={() => goToPage("/meu-menu/orientacoes-gerais")} className="menu-card">
             <div className="icon-round">
               <img className="menu-icon" src={help} alt="Orientações gerais"/>
             </div>

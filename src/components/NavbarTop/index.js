@@ -1,9 +1,15 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 import "./styles.css";
 import logo from "../../assets/logo-sem-nome.png";
 import iconIosBack from "../../assets/icon-ios-back.png";
+
+import apple from "../../assets/apple.png";
+import cooking from "../../assets/cooking.png";
+import market from "../../assets/market.png";
+import help from "../../assets/help.png";
+
 
 export default function NavbarTop({ name, withMenu, withLogo, withGoBack }) {
     
@@ -33,11 +39,11 @@ export default function NavbarTop({ name, withMenu, withLogo, withGoBack }) {
             {
                 withMenu ? 
                  (
-                    <ul class="navbar-nav">
-                        <li><button onClick={() => handleClick("/meu-menu")}>Cardápio</button></li>
-                        <li><button onClick={() => handleClick("/meu-menu/receitas")}>Receitas</button></li>
-                        <li><button onClick={() => handleClick("/meu-menu/lista-de-compras")}>Lista de compras</button></li>
-                        <li><button onClick={() => handleClick("/meu-menu/orientacoes-gerais")}>Orientações gerais</button></li>
+                    <ul className="navbar-nav">
+                        <li><NavLink to="/meu-menu/cardapios" activeClassName="selected"><img src={apple} />Cardápio</NavLink></li>
+                        <li><NavLink to="/meu-menu/receitas" activeClassName="selected"><img src={cooking} />Receitas</NavLink></li>
+                        <li><NavLink to="/meu-menu/lista-de-compras" activeClassName="selected"><img src={market} />Lista de compras</NavLink></li>
+                        <li><NavLink to="/meu-menu/orientacoes-gerais" activeClassName="selected"><img src={help} />Orientações gerais</NavLink></li>
                     </ul>
                  ) : 
                  ('')

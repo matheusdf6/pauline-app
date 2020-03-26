@@ -1,0 +1,70 @@
+.meal-accordion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 8px;
+    margin-top: 10px;
+    background-color: #ECEAEF;
+    max-height: 53px;
+    box-shadow: 0px 2px 6.62px rgba(0,0,0,0.08);
+    padding: 0 24px 18px;
+    transition: all 0.3s ease-in-out;
+}
+
+.meal-accordion.collapsed{
+    background-color: #fff;
+    max-height: 1000px;
+}
+
+.meal-accordion .accordion-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 0;
+    background: transparent;
+    border-radius: 8px;
+}
+
+.meal-accordion .accordion-title h4 {
+    font-size: 16px;
+    color: #4F3a6D;
+    margin-top: 6px;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.meal-accordion.collapsed .accordion-title h4 {
+    font-size: 18px;
+    color: #739C23;
+    margin-top: 0;
+}
+
+
+
+.meal-accordion .accordion-text {
+    overflow: hidden;
+    width: 100%;
+}
+
+.meal-accordion .meal-descricao {
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.meal-accordion .opcao {
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.meal-accordion .opcao h5 {
+    color: #4F3a6D;
+    margin-bottom: 6px;
+}
+
+.meal-accordion .opcao:not(:last-of-type) {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}

@@ -1,0 +1,212 @@
+.profile-dash {
+    padding: 0 15px;
+    padding-bottom: 80px;
+}
+
+.profile-dash .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-dash .header h2{
+    font-size: 20px;
+    color: #4A385E;
+    text-align: center;
+    padding: 16px 0 0 0;
+} 
+
+.profile-dash .header a {
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;
+    line-height: 14px;
+    color: #868686;
+}
+
+.profile-dash .profile-links {
+    display:  flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 16px;
+}
+
+.profile-dash .profile-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 37vw;
+    height: 37vw;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.profile-dash .profile-links a h3 {
+    margin-top: 12px;
+    color: #4f3a6d;
+}
+
+.profile-dash .profile-links a:visited h3 {
+    color: #4f3a6d;
+}
+
+.profile-dash .profile-summary {
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    padding-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-top: 24px;
+    border-radius: 12px;
+}
+
+.profile-dash .profile-summary .box-evolution {
+    width: 100%;
+}
+
+.profile-dash .profile-summary .box-evolution h3,
+.profile-dash .profile-summary .box-metrics h3 {
+    font-size: 20px;
+    color: #4A385E;
+    text-align: center;
+    padding: 16px 0 0 0;
+}
+
+.profile-dash .profile-summary .box-evolution .imagens {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.back-image-wrapper {
+    width: 47%;
+
+}
+.profile-dash .profile-summary .box-evolution .imagens .background-image {
+    height: 0;
+    width: 100%;
+    position: relative;
+    padding-bottom: 118.33%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
+}
+.profile-dash .profile-summary .box-evolution a {
+    font-size: 14px;
+    color: #4A385E;
+    text-decoration: none;
+    float: right;
+    margin-top: 10px;
+}
+
+.profile-dash .profile-summary .box-metrics {
+    width: 100%;
+}
+.profile-dash .profile-summary .box-metrics .flex-table{
+    display: flex;
+    align-items: stretch;
+    border-radius: 12px;
+    background: #FDFBFE;
+    margin-top: 8px;
+} 
+
+.profile-dash .profile-summary .box-metrics .ft-column {
+    font-size: 16px;
+    height: 100%;
+}
+
+.flex-table.col-3 .ft-column,
+.flex-table.col-2 .ft-column:first-of-type {
+    width: 33%;
+}
+.flex-table.col-2 .ft-column:last-of-type {
+    width: 66%;
+}
+
+
+
+.box-metrics .ft-column .ft-cell {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    color: #121212;
+    font-weight: normal;
+}
+
+.box-metrics .ft-column:first-of-type .ft-cell {
+    justify-content: flex-start;
+}
+
+.box-metrics .ft-column:not(:first-of-type) .ft-cell {
+    justify-content: center;
+}
+
+.profile-dash .profile-summary .box-metrics .ft-column:first-of-type .ft-cell{
+    color: #4A385E;
+    font-weight: bold;
+}
+
+.profile-dash .profile-summary .box-metrics .ft-column .ft-cell.ft-head {
+    font-size: 13px;
+    padding-top: 20px;
+    color: #4A385E;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+}
+
+@media only screen and (max-width: 340px) {
+    .profile-dash .profile-summary .box-metrics .ft-column .ft-cell.ft-head {
+        font-size: 11px;
+        padding: 12px 0px;
+        font-weight: normal;
+    }      
+}
+
+.box-metrics .ft-column .ft-cell:not(:first-of-type) {
+    border-top: 1px solid #eee;
+}
+
+.box-metrics .ft-column .ft-empty {
+    opacity: 0;
+}
+
+.error-msg {
+    height: 80px;
+    background: #f8d7da;
+    color: #721c24;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+.logout-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+
+.logout-container button{
+    height: 50px;
+    width: 180px;
+    background: #b92b39;
+    color: #fff;
+    border-radius: 35px;
+    font-size: 18px;
+}

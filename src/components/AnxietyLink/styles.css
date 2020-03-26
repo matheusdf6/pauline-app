@@ -26,3 +26,28 @@
     width: 85%;
     padding: 0 16px;
 }
+
+.ansiety-link.al-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ansiety-link.al-row  img {
+    margin-bottom: 0;
+}
+
+.ansiety-link.al-row  h4 {
+    text-align: left;
+    margin: 0;
+    margin-left: 15px;
+    font-size: 16px;
+    display: inline-block;
+}
+
+
+.ansiety-link.al-row  button {
+    width: auto;
+    min-width: 120px;
+    margin: 0;
+}

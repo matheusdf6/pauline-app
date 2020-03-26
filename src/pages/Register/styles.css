@@ -1,0 +1,192 @@
+.register-page {
+    background: url("../../assets/bg-home.png");
+    background-position: center;
+    background-size: cover;
+    background-color: #533d67;
+    background-blend-mode: soft-light;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 16px;
+    position: relative;
+}
+.loading-top {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+.register-page img {
+    margin-top: 30px;
+    width: 133px;
+    height: 69px;
+}
+
+.register-page h2 {
+    color: #fff;
+    margin-bottom: 10px;
+    margin-top: 22px;
+    font-size: 20px;
+}
+
+.register-page .signup-form {
+    width: 100%;
+    background: #fff;
+    padding: 8px;
+    border-radius: 12px 12px 0 0;
+    flex: 1;
+}
+
+.register-page  form input:not([type="radio"]) {
+    height: 53px;
+    box-shadow: none;
+    outline: none;
+    border: 2px solid #BAADCA;
+    border-radius: 12px;
+    margin: 10px 0;
+    padding: 0 20px;
+    color: #4F3A6D;
+    background: transparent;
+    display: block;
+    width: 100%;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.register-page .signup-form .input-container {
+    position: relative;
+}
+
+.register-page .signup-form .radio-container {
+    padding-left: 4px;
+}
+
+.register-page .signup-form .input-container + .input-container {
+    margin-top: 16px;
+}
+
+.register-page .signup-form .input-container label.radio-label {
+    color: #868686;
+
+}
+
+.register-page .signup-form .input-container label:not(.radio-label) {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    padding: 0 4px;
+    color: #868686;
+    background: #fff;
+    transform: translateY(-50%);
+    transition: 0.3s all ease-in-out;
+}
+
+.register-page .signup-form .input-container input:focus + label:not(.radio-label),
+.register-page .signup-form .input-container label.filled:not(.radio-label) {
+    top: 0;
+    color: rgba(79, 58, 109, .6);
+}
+
+
+
+.register-page  form input:not([type="radio"]):focus {
+    border-color: rgba(79, 58, 109, .6);
+} 
+
+.register-page  form input[type="radio"] {
+    visibility: hidden;
+}
+
+.register-page  form button {
+    border-radius: 12px;
+    margin-top: 10px;
+    background-color: #fff;
+    border-color: #979797;
+    border-width: 1px;
+    width: 100%;
+    height: 53px;
+    color: rgba(79, 58, 109, 1);
+    font-weight: 700;
+    text-align: center;
+    font-size: 16px;
+    box-shadow: none;
+    outline: none;
+    display: block;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+}
+
+
+.register-page .signup-form .input-container {
+    width: 100%;
+}
+
+.register-page .signup-form .input-container .radio  {
+    display: inline;
+}
+.register-page .signup-form .input-container .radio + .radio {
+    margin-left: 24px;
+}
+.register-page .signup-form .input-container > .radio-label {
+    display: block;
+}
+.register-page .signup-form .input-container .radio .radio-label  {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding-left: 22px;
+}
+
+.register-page .signup-form .input-container .radio  .radio-label:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #4F3A6D;
+}
+
+.register-page .signup-form .input-container .radio  .radio-label:after {
+    content: " ";
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #fff;
+}
+
+
+.register-page .signup-form .input-container .radio  .radio-label.checked:after {
+    background: #4F3A6D;
+}
+
+.register-page .signup-form button {
+    border-radius: 12px;
+    motion: 10px;
+    background: #739C23;
+    color: #fff;
+    height: 54px;
+}
+
+.register-page .signup-bottom {
+    margin-top: 12px;
+    color: #868686;
+    text-align: center;
+}
+
+.register-page .signup-bottom a,
+.register-page .signup-bottom a:visited {
+    color: #4F3A6D;
+    text-decoration: underline;
+}

@@ -1,3 +1,23 @@
 .page-content {
-    padding: 30px;
+    padding: 15px;
+    padding-bottom: 80px;
+}
+
+.my-menu .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.my-menu .links a {
+    color: #868686;
+}
+
+.my-menu .error-message {
+    margin: 32px 0;
+    border-radius: 12px;
+    padding: 40px;
+    font-size: 20px;
+    color: #721c24;
+    background-color: #f8d7da;
 }

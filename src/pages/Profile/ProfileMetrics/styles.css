@@ -1,0 +1,73 @@
+.profile-metrics {
+    padding: 15px;
+    padding-bottom: 80px;
+}
+
+.profile-metrics  .empty {
+    padding: 12px 24px;
+    font-size: 17px;
+    text-align: left;
+    color: #55366f;
+}
+
+.profile-metrics .header h2 {
+    font-size: 20px;
+    color: #55366f;
+    font-weight: bold;
+    padding: 8px 0 16px 0;
+    text-align: center;
+}
+
+.profile-metrics > h2 {
+    font-size: 20px;
+    color: #878787;
+    font-weight: bold;
+    padding: 8px;
+    text-align: center;
+    margin-top: 24px;
+}
+
+.profile-metrics .metrics-registries {
+    padding: 0 25px;
+}
+
+.table-container + .table-container{
+    margin-top: 16px;
+}
+
+.table-container h3 {
+    font-size: 16px;
+    color: #55366f;
+    padding: 8px;
+}
+
+.table-container table {
+    width: 100%;
+}
+
+.table-container table th,
+.table-container table td {
+    padding: 6px 16px;
+    vertical-align: middle;
+    text-align: left;
+    font-size: 15px;
+}
+
+.table-container table thead th {
+    color: #55366f;
+    font-weight: normal;
+} 
+.table-container table tbody td {
+    color: #868686;
+    font-weight: normal;
+}
+
+.table-container table thead tr th,
+.table-container table tbody tr:not(:last-of-type) td{
+    border-bottom: 1px solid #eee;
+}
+
+.table-container table thead tr th:not(:first-of-type),
+.table-container table tbody tr td:not(:first-of-type){
+    border-left: 1px solid #eee;
+}

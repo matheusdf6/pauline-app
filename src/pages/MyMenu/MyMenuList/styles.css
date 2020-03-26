@@ -1,0 +1,91 @@
+.page-content {
+    padding: 15px;
+    padding-bottom: 80px;
+}
+
+.my-menu .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.my-menu .links a {
+    color: #868686;
+}
+
+.menus-search-form {
+    margin-top: 8px;
+    position: relative;
+}
+.menus-search-form button {
+    position: absolute;
+    top: 13px;
+    right: 30px;
+    display: inline-block;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+}
+.menus-search-form input {
+    background: #ECEAEF;
+    border-radius: 12px;
+    height: 40px;
+    width: 100%;
+    padding: 0 22px;
+    color: #545454;
+    font-size: 14px;
+    border: 0;
+}
+
+.my-menu-list .results {
+    padding: 16px 0;
+    text-align: right;
+    font-size: 14px;
+    color: #868686;
+}
+
+.my-menu-list .menu-cards {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.my-menu-list .menu-cards  .menu-card {
+    background: #ECEAEF;
+    width: 47%;
+    border-radius: 12px;
+    display: block;
+    cursor: pointer;
+    margin: 8px 0;
+}
+
+.menu-cards  .menu-card .menu-text {
+    padding: 18px 15px;
+}
+
+.menu-cards  .menu-card .menu-text .data {
+    font-size: 12px;
+    color: #868686;
+}
+
+.menu-cards  .menu-card .menu-text .name {
+    font-size: 20px;
+    color: #55366F;
+}
+
+.menu-cards  .menu-card .menu-link {
+    border-top: 1px solid #ddd;
+    padding: 6px 15px;
+    color: #868686;
+    position: relative;
+}
+
+.menu-cards  .menu-card .menu-link:after {
+    content: ">";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+}

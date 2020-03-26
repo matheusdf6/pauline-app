@@ -1,9 +1,13 @@
 import recipesAPI from './recipes';
+import scheduleAPI from './schedules';
+import menusAPI from './menus';
 
 export const syncChanges = async () => {
   const endpoints = {
     recipes: recipesAPI.getRecipes(),
     recipesCategories: recipesAPI.getRecipeCategories(),
+    schedules: scheduleAPI.getSchedules(),
+    menus: menusAPI.getNewMenus()
   };
 
   const keys = Object.keys(endpoints);

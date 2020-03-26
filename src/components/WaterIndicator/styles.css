@@ -1,10 +1,16 @@
 .water-indicator {
+    /* padding-left: 6px;
+    padding-right: 6px; */
     margin-bottom: 15px;
     background: #f0f0f0;
     height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.water-indicator button {
+    background: none;
 }
 
 .water-indicator .cups{
@@ -17,6 +23,7 @@
     opacity: 0.6;
     height: 40px;
     width: 35px;
+    transition: 0.2s opacity ease-in-out;
 }
 
 .water-indicator .cup-box.drink-active img {
@@ -27,4 +34,10 @@
     font-size: 14px;
     color: #4F3A6D;
     text-align: center;
+}
+
+@media only screen and (max-width: 338px) {
+    .water-indicator {
+        padding: 15px 8px;
+    }
 }

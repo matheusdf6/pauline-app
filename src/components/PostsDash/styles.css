@@ -1,0 +1,25 @@
+.news-box {
+    margin: 24px 0;
+}
+.news-box .news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.news-box .news-header h3 {
+    font-size: 18px;
+    color: #4F3a6D;
+    font-weight: normal;
+}
+
+.news-box .news-header a {
+    font-size: 14px;
+    color: #868686;
+    font-weight: normal;
+}
+
+.posts-loading {
+    margin-top: 32px;
+}
+

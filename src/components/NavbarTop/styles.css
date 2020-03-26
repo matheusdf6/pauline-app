@@ -9,7 +9,7 @@
 }
 
 .navbar-top.with-menu {
-    height: 130px;
+    height: 110px;
 }
 
 .navbar-top.with-logo {
@@ -44,4 +44,50 @@
 .navbar-top.with-logo h2 {
     font-weight: normal;
     margin: 8px 0;
+}
+
+.navbar-top .navbar-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+
+.navbar-top .navbar-nav li {
+    width: auto;
+    height: 32px;
+    background: #3D2A57;
+    list-style: none;
+    border-radius: 4px;
+}
+
+.navbar-top .navbar-nav li + li {
+    margin-left: 12px;
+}
+
+.navbar-top .navbar-nav li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 32px;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
+    padding-right: 8px;
+    font-size: 12px;
+}
+
+.navbar-top .navbar-nav li a.selected {
+    width: auto;
+}
+
+.navbar-top .navbar-nav li img{
+    filter: brightness(0) saturate(100%) invert(67%) sepia(13%) saturate(698%) hue-rotate(231deg) brightness(83%) contrast(89%);
+    width: 22px;
+    min-width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    margin-left: 4px;
+    object-fit: contain;
 }

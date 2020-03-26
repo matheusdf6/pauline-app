@@ -1,0 +1,140 @@
+.profile-edit {
+    padding: 15px;
+    padding-bottom: 80px;
+    position: relative;
+}
+
+.profile-edit .loading-info {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.profile-edit .header h2 {
+    font-size: 20px;
+    color: #4A385E;
+    text-align: center;
+    padding: 16px 0 0 0;
+}
+
+.profile-edit .box-dados {
+    margin-top: 32px;
+    background: #fff;
+    box-shadow: 0px 2px 6.62px rgba(0,0,0,0.08)
+}
+
+.profile-edit .box-dados h3 {
+    font-size: 17px;
+    color: #4A385E;
+    text-align: left;
+    padding: 15px;
+}
+
+.profile-edit .box-dados .row {
+    display: flex;
+    padding: 12px 15px;
+}
+
+.profile-edit .box-dados .row + .row {
+    border-top: 1px solid #eee;
+}
+
+.profile-edit .box-dados .row label {
+    color: #868686;
+}
+
+
+.profile-edit .box-dados .row input {
+    flex: 1;
+    border: none;
+    color: #4A385E;
+    margin-left: 4px;
+    letter-spacing: 0.04em;
+} 
+
+.profile-edit .box-dados.loading .row input {
+    opacity: 0.6;
+}
+
+.profile-edit .box-dados .row input:disabled {
+    border: none;
+    background: none;
+}
+
+.profile-edit .box-dados .row button {
+    background: none;
+}
+
+.profile-edit .box-senhas {
+    margin-top: 32px;
+    background: #F4F4F4;
+    box-shadow: 0px 2px 6.62px rgba(0,0,0,0.08);
+    padding: 15px;
+}
+
+.profile-edit .box-senhas form.loading input,
+.profile-edit .box-senhas form.loading label,
+.profile-edit .box-senhas form.loading button {
+    opacity: 0.7;
+}
+
+
+
+.profile-edit .box-senhas h3 {
+    font-size: 17px;
+    color: #4A385E;
+    text-align: left;
+    padding-bottom: 15px;
+}
+
+.profile-edit .box-senhas .row {
+    height: 50px;
+    width: 100%;
+    position: relative;
+}
+
+.profile-edit .box-senhas .row + .row  {
+    margin-top: 16px;
+}
+
+.profile-edit .box-senhas .row input {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: transparent;
+    padding-left: 16px;
+    font-size: 16px;
+    color: #868686;
+}
+
+.profile-edit .box-senhas .row label {
+    position: absolute;
+    font-size: 16px;
+    color: #868686;
+    font-weight: normal;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s all ease-in-out;
+    padding: 0 4px;
+    background: #F4F4F4;
+}
+
+.profile-edit .box-senhas .row input:focus + label,
+.profile-edit .box-senhas .row input + label.filled {
+    top: 0;
+}
+
+.profile-edit .box-senhas .row button {
+    background: #52356D;
+    color: #fff;
+    height: 42px;
+    width: 100px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.profile-edit .box-senhas .row.footer {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,0 +1,75 @@
+.recipe-single-inner {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.recipe-single {
+    width: calc(100% - 30px);
+    min-height: calc(100vh - 52px);
+    margin: 52px auto 0 auto;
+    box-shadow: 0px 2px 6.62px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.recipe-single img {
+    height: 35vw;
+    width: 50vw;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 auto;
+    border-radius: 12px;
+    position: absolute;
+    top: -10vw;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.recipe-single .recipe-single-text {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    padding: 30vw 15px 0 15px;
+}
+
+.recipe-single .recipe-single-text > h2 {
+    text-align: center;
+    color: #4F3A6D;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+.recipe-single .single-tag {
+    padding: 0 8px;
+    border-radius: 4px;
+    background-color: #ECEAEF;
+    margin-bottom: 8px;
+    height: 24px;
+    text-align: center;
+    color: #868686;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.recipe-single .single-body {
+    width: 100%;
+}
+
+.recipe-single .single-body ul {
+    list-style: none;
+}
+
+
+.recipe-single .single-body ul li + li {
+    margin-top: 6px;
+}
+
+.recipe-single .single-body > * {
+    margin-bottom: 16px;
+}

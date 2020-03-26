@@ -1,0 +1,184 @@
+
+
+.last-registry-accordion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 8px;
+    margin-top: 10px;
+    background-color: #fff;
+    max-height: 53px;
+    box-shadow: 0px 2px 6.62px rgba(0,0,0,0.08);
+    padding: 0 0 18px 0;
+    transition: all 0.3s ease-in-out;
+    margin-top: 16px;
+}
+
+.last-registry-accordion.collapsed{
+    max-height: 1000px;
+}
+
+.last-registry-accordion .accordion-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 24px;
+    background: transparent;
+    border-radius: 8px;
+}
+
+.last-registry-accordion .accordion-title  {
+    font-size: 16px;
+    color: #4F3a6D;
+    margin-top: 6px;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.last-registry-accordion .accordion-text .accordion-row {
+    border-top: 1px solid #eee;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+}
+
+.last-registry-accordion .accordion-text .accordion-row .accordion-label {
+    font-size: 16px;
+    color: #4F3a6D;
+}
+
+.last-registry-accordion .accordion-text .accordion-row span:last-of-type {
+    padding: 8px 0;
+    width: 70px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #4F3a6D;
+    border-radius: 4px;
+}
+
+
+.last-registry-accordion .accordion-text {
+    overflow: hidden;
+    width: 100%;
+}
+
+.others-registries {
+    max-height: 25px;
+    overflow: hidden;
+}
+.others-registries.collapsed  {
+    background: #f5f5f5;
+    border-radius: 12px;
+    max-height: 1000px;
+    transition: 0.3s all ease-in-out;
+}
+.others-registries.collapsed > button {
+    font-size: 16px;
+    padding: 10px;
+}
+
+.others-link {
+    color: #878787;
+    font-weight: normal;
+    font-size: 14px;
+    background: none;
+    transition: 0.2s all ease-in-out;
+    padding: 8px 0;
+}
+
+.others-list form{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    height: 40px;
+    padding: 0 15px;
+    margin-top: 8px;
+}
+
+.others-list form .select-container {
+    position: relative;
+    width: calc(46% - 25px)
+}
+.others-list form select {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-radius: 8px;
+    border: 3px solid rgba(79, 58, 109, 0.45);
+    color: #868686;
+    font-size: 16px;
+    padding-left: 8px;
+}
+form .select-container label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    padding: 0 2px;
+    background: #f5f5f5;
+    transition: 0.2s all ease-in-out;
+    color: #868686;
+}
+
+form .select-container select:focus + label,
+form .select-container label.filled  {
+    top: 0;
+}
+
+.others-list form button {
+    width: 50px;
+    background: #55366F;
+    border: none;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.others-list form button img {
+    filter: invert() brightness(1.5);
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.others-list .list {
+    padding: 15px;
+}
+
+.others-list .list .other-metric-accordion{
+    max-height: 20px;
+    transition: 0.3s all ease-in;
+    overflow: hidden;
+}
+
+.others-list .list .other-metric-accordion .accordion-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 1.2;
+}
+
+.others-list .list .other-metric-accordion:not(:last-of-type) {
+    border-bottom: 1px solid #ddd;
+}
+
+
+.others-list .list .other-metric-accordion .met-title {
+    padding: 4px 0;
+    color: #4F3a6D;
+}
+
+.others-list .list .other-metric-accordion .met-info {
+    padding: 4px 0;
+}
+
+.others-list .list .other-metric-accordion.collapsed{
+    max-height: 150px;
+}

@@ -17,16 +17,41 @@ export default function WaterIndicator() {
     return ( NUMBER_OF_DRINKS - cups > 0 ? NUMBER_OF_DRINKS - cups : 0); 
   }
 
-  useEffect(() => {
-    setCups(2)
-  }, []);
+  const getCupsOfTheDay = () => {
+      let today = new Date();
+      let stored = Storage.getLocalStorage("cups");
+      if( stored ) {
+        let date = new Date(stored.date);
+        if(date.getMonth() === today.getMonth() && 
+           date.getDate() === today.getDate() && 
+           date.getFullYear() === today.getFullYear() ) {
+          setCups(stored.cups);
+        } else {
+          setCups(0);
+          Storage.setLocalStorage("cups", { cups: 0, date: today }, 1440);
+        }
+      } else {
+        setCups(0);
+        Storage.setLocalStorage("cups", { cups: 0, date: today }, 1440);
+      }
+  }
+
+  useEffect(getCupsOfTheDay, []);
+
+  const handleClick = (index) => {
+    setCups(index + 1);
+
+    let today = new Date();
+    Storage.setLocalStorage("cups", { cups: index + 1, date: today }, 1440);
+
+  }
 
   return (
     <div className="water-indicator card-white">
       <div className="cups">
         { 
           _.range(NUMBER_OF_DRINKS).map((key) => 
-            (<button key={key} className={ (key <= ( cups - 1 ) ? 'cup-box drink-active' : 'cup-box') }><img src={drink} alt="Copo"/></button>)
+            (<button key={key} onClick={() => handleClick(key)} className={ (key <= ( cups - 1 ) ? 'cup-box drink-active' : 'cup-box') }><img src={drink} alt="Copo"/></button>)
           )
         }
       </div>
