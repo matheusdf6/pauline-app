@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { delay } from "lodash"
+import moment from "moment";
 
 import Storage from "../Storage";
 import { syncChanges } from "../../api/modules/synchronizer";
@@ -9,6 +10,7 @@ import useNotification from "../Notification/useNotification"
 import novaReceita from "../../assets/nova-receita.png";
 import novaAgenda from "../../assets/nova-agenda.png";
 import novoCardapio from "../../assets/novo-cardapio.png";
+import cups from "../../assets/cups.png";
 
 export default function SynchronizerComponent() {
 
@@ -29,14 +31,9 @@ export default function SynchronizerComponent() {
             const storedSchedules = Storage.getLocalStorage("schedules");
             const storedrecipes = Storage.getLocalStorage("recipes");
             const cardapios =  user.acf && user.acf.cardapios ? user.acf.cardapios : null;
-    
-
         
             let result = await syncChanges();
-            console.log(result);
-
         
-
             if(result) {
                 let isNewRec = checkNewRecipe(result.recipes, storedrecipes);
                 let isWaterCheck = checkWater();
@@ -54,7 +51,7 @@ export default function SynchronizerComponent() {
                 }
             }
         }
-        delay(loadSync, 4000);
+        delay(loadSync, 1);
     },[])
 
     const goToRecipe = (receita) => {
@@ -95,7 +92,7 @@ export default function SynchronizerComponent() {
 
     const goToWhats = () => {
         setPipe(null);
-        window.location.href = "https://api.whatsapp.com/send?phone=5548996601926&text=Ol%C3%A1%2C%20gostaria%20de%remarcar%20minha%20consulta";
+        window.location.href = "https://api.whatsapp.com/send?phone=5548996601926&text=Ol%C3%A1%2C%20gostaria%20de%20falar%20sobre%20a%20minha%20consulta";
         return null;
     } 
 
@@ -103,22 +100,25 @@ export default function SynchronizerComponent() {
         if( stored ) {
             // let list = JSON.parse(stored);
             let { inicio } = stored;
-            let data = new Date(inicio);
-            let now = new Date();
-            if(data > now) {
+            let data = moment(inicio);
+            let now = moment();
+
+            if(now.diff(data) < 0) {
                 Storage.setLocalStorage("schedules", new_schedule, 10800);
-                newScheduleNotification(`${data.getDate()}/${ twoDigit(data.getMonth()) } - ${twoDigit(data.getHours())}:${twoDigit(data.getMinutes())}`);
+                newScheduleNotification(`${twoDigit(data.date())}/${ twoDigit(data.month() + 1) } - ${twoDigit(data.hour())}:${twoDigit(data.minute())}`);
                 return true;
             }
             return false;
         } else {
             Storage.setLocalStorage("schedules", new_schedule, 10800);
 
-            let { inicio } = new_schedule[0];
-            let data = new Date(inicio);
-            let now = new Date();
-            if(data > now) {
-                newScheduleNotification(`${data.getDate()}/${ twoDigit(data.getMonth()) } - ${twoDigit(data.getHours())}:${twoDigit(data.getMinutes())}`);
+            let { inicio } = new_schedule;
+
+            let data = moment(inicio);
+            let now = moment();
+            
+            if(now.diff(data) < 0) {
+                newScheduleNotification(`${twoDigit(data.date())}/${ twoDigit(data.month() + 1) } - ${twoDigit(data.hour())}:${twoDigit(data.minute())}`);
                 return true;
             }
             return false;
@@ -152,21 +152,21 @@ export default function SynchronizerComponent() {
     const checkNewMenu = (new_menus, cardapios) => {
         if( cardapios ) {
             let sorted_cache = cardapios.sort((a,b) => {
-                let dateA = new Date(a.data);
-                let dateB = new Date(b.data);
-                return  dateB - dateA;
+                let dateA = moment(a.data);
+                let dateB = moment(b.data);
+                return  dateB.diff(dateA);
             })
 
             let sorted_new = new_menus.sort((a,b) => {
-                let dateA = new Date(a.data);
-                let dateB = new Date(b.data);
-                return  dateB - dateA;
+                let dateA = moment(a.data);
+                let dateB = moment(b.data);
+                return  dateB.diff(dateA);
             })
 
-            let sorted_date = new Date(sorted_cache[0].data);
-            let last_date = new Date(sorted_new[0].data)
+            let sorted_date = moment(sorted_cache[0].data);
+            let last_date = moment(sorted_new[0].data)
       
-            if(last_date > sorted_date) {
+            if(last_date.diff(sorted_date) > 0) {
                 let novo_usuario = Storage.getStoredUser();
                 novo_usuario.acf.cardapios = new_menus;
                 Storage.uploadUser(novo_usuario);
@@ -177,9 +177,9 @@ export default function SynchronizerComponent() {
         } else {
 
             let sorted_new = new_menus.sort((a,b) => {
-                let dateA = new Date(a.data);
-                let dateB = new Date(b.data);
-                return  dateB - dateA;
+                let dateA = moment(a.data);
+                let dateB = moment(b.data);
+                return  dateB.diff(dateA);
             });
 
             let novo_usuario = Storage.getStoredUser();
@@ -208,18 +208,15 @@ export default function SynchronizerComponent() {
     const checkWater = () => {
         let stored = Storage.getLocalStorage("cups");
         if( stored ) {
-            let date = new Date(stored.date);
-            let today = new Date();
+            let date = moment(stored.date);
+            let today = moment();
 
-            if( date.getMonth() === today.getMonth() && 
-                date.getDate() === today.getDate() && 
-                date.getFullYear() === today.getFullYear() ) {
+            if( date.isSame(today, 'day') ) {
                 
-                let diff = ( today - date );
+                let diff = today.diff(date, 'minute');
                 
-
-                if( diff > 5.4e+6 ) {
-                    stored.date = today; 
+                if( diff > 90 ) {
+                    stored.date = today.format("YYYY-MM-DD HH:mm:ss"); 
                     Storage.setLocalStorage("cups", stored, 1440);
                     newWaterNotification();
                     return true;
@@ -232,7 +229,7 @@ export default function SynchronizerComponent() {
     const newWaterNotification = () => {
 
         addToPipeline(
-            novoCardapio,
+            cups,
             "Beba água",
             '',
             "Mantenha-se hidratado",

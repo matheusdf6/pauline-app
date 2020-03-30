@@ -34,8 +34,8 @@ export function useConnectivityListener() {
           <strong>{isOnline ? 'Online' : 'Offline'}</strong>
           <div>
             {isOnline
-              ? 'Editing is available again'
-              : 'Changes you make may not be saved'}
+              ? 'A edição está disponível novamente'
+              : 'Suas mudanças podem não ser salvas'}
           </div>
         </Fragment>
       );

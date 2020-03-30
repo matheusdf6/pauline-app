@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import moment from "moment";
 import { Link, useParams } from "react-router-dom";
 
 import { getMenus } from "../../api/modules/menus";
@@ -23,32 +23,23 @@ export default function MyMenu() {
 
   const orientacoes = null;
 
-  // useEffect(() => {
-  //   let result = getMenus();
-
-  //   var today = new Date();
-  //   var dd = String(today.getDate()).padStart(2, '0');
-  //   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  //   var yyyy = today.getFullYear();
-
-  //   today = yyyy + '-' + mm + '-' + dd;
-  //   let today_menu = result ? result.filter((e) => e.data === today)  : null;
-  //   setMenu( today_menu  );
-  // }, []);
-
   const { dia } = useParams();
 
   useEffect(() => {
     let data = null;
-    if( dia && Date.parse(dia) ) {
-      data = new Date(dia);
+    let is_valid = false;
+    if( dia ) {
+      let dia_moment = moment(dia);
+      if( dia_moment.isValid() ) {
+        data = dia_moment;
+      }
     }
     let result = getMenus();
     if( result.length > 0 ) {
       if( data ) {
         let filtered = result.filter((e,i,a) => {
-          let testData = new Date(e.data);
-          if( isSameDay(testData, data) ) {
+          let testData = moment(e.data);
+          if( testData.isSame(data, "day") ) {
             return e;
           }
         });
@@ -60,9 +51,9 @@ export default function MyMenu() {
         }
       } else {
         let sorted = result.sort((a,b) => {
-          let dateA = new Date(a.data);
-          let dateB = new Date(b.data);
-          return  dateB - dateA;
+          let dateA = moment(a.data);
+          let dateB = moment(b.data);
+          return  dateB.diff(dateA);
         })
         setMenu(sorted);  
       }
@@ -75,7 +66,7 @@ export default function MyMenu() {
         <NavbarTop name="Meu Cardápio" withGoBack={true} withMenu={true}></NavbarTop>
         <div className="my-menu page-content">
             <div className="links">
-              <a href="">Baixar Cardápio</a>
+              {/* <a href="">Baixar Cardápio</a> */}
               <Link to="/meu-menu/cardapios/lista">Ver todos os cardápios</Link>
             </div>
             {

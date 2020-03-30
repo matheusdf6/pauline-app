@@ -7,7 +7,7 @@ export const api = axios.create({
      * Api options
      */
     baseURL: 'https://paulinemaccari.com.br/wp-json/wp/v2/',
-    // baseURL: 'https://localhost:80/wp-json/wp/v2/',
+    // baseURL: 'http://localhost:80/wp-json/wp/v2/',
     /**
      * headers
      */

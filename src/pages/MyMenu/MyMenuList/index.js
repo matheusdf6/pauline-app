@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import moment from "moment";
 import { useHistory } from "react-router-dom";
 
 import { getMenus } from "../../../api/modules/menus";
@@ -8,6 +8,7 @@ import "./styles.css";
 import NavbarTop from "../../../components/NavbarTop";
 import NavbarBottom from "../../../components/NavbarBottom";
 import Loader from "../../../components/Loader";
+import twoDigit from "../../../utils/twoDigit";
 
 import searchIcon from "../../../assets/search.png";
 import close from "../../../assets/close.png";
@@ -25,9 +26,9 @@ export default function MyMenuList() {
     let result = getMenus();
     if( result.length > 0 ) {
       let sorted = result.sort((a,b) => {
-        let dateA = new Date(a.data);
-        let dateB = new Date(b.data);
-        return  dateB - dateA;
+        let dateA = moment(a.data);
+        let dateB = moment(b.data);
+        return  dateB.diff(dateA);
       })
       setMenus(sorted);
     } 
@@ -64,8 +65,8 @@ export default function MyMenuList() {
   }
 
   const normalizeDate = (d) => {
-    let data = new Date(d);
-    return `${data.getDate()}/${ twoDigit(data.getMonth() + 1) }/${data.getFullYear()}`;
+    let data = moment(d);
+    return `${twoDigit(data.date())}/${ twoDigit(data.month() + 1) }/${data.year()}`;
   }
 
   return (
@@ -125,8 +126,4 @@ export default function MyMenuList() {
         <NavbarBottom></NavbarBottom>
     </div>
   );
-}
-
-function twoDigit(num) {
-  return ("0" + num).slice(-2);
 }

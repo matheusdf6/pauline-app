@@ -1,6 +1,7 @@
 .profile-evolution {
     padding: 0 30px;
     padding-bottom: 80px;
+    position: relative;
 }
 
 .profile-evolution .header {
@@ -58,6 +59,18 @@
     position: relative;
 }
 
+.back-image-wrapper,
+.add-image-box {
+    height: calc(-22.857px + 54.018vw);
+}
+
+@media only screen and (min-width: 768px) {
+    .back-image-wrapper,
+    .add-image-box {
+        height: 320px;
+    }    
+}
+
 .profile-evolution .imagens .background-image {
     height: 0;
     width: 100%;
@@ -79,4 +92,10 @@
     padding: 2px 4px;
     border-radius: 4px;
     background: rgba(82, 53, 107,.6);
+}
+
+.loading-top {
+    position: absolute;
+    top: 16px;
+    right: 16px;
 }

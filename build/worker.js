@@ -1,4 +1,4 @@
-let CACHE_NAME = 'pauline-app';
+let CACHE_NAME = 'pauline-pwa';
 let urlsToCache = [
   '/',
   '/completed'
@@ -33,7 +33,7 @@ self.addEventListener('fetch', event => {
 
 // Update a service worker
 self.addEventListener('activate', event => {
-  let cacheWhitelist = ['your-app-name'];
+  let cacheWhitelist = ['pauline-pwa'];
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(

@@ -1,3 +1,5 @@
+import moment from "moment";
+
 function setLocalStorage(key, value, minutes) {
     var expirarem = (new Date().getTime()) + (60000 * minutes);
 
@@ -41,7 +43,7 @@ function uploadUser(value) {
 }
 
 function storeTips(tips) {
-    let data_criado = new Date();
+    let data_criado = moment();
     let transformed = tips.map((e, index) => {
         return {
             tip: e,
@@ -50,7 +52,7 @@ function storeTips(tips) {
     });
     setLocalStorage("tips", {
         tips: transformed,
-        data_criado,
+        data_criado: data_criado.format("YYYY-MM-DD"),
         last_seen: -1,
         already_seen: []
     }, 1440);

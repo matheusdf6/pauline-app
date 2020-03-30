@@ -8,8 +8,11 @@
     background-color: #ECEAEF;
     max-height: 53px;
     box-shadow: 0px 2px 6.62px rgba(0,0,0,0.08);
-    padding: 0 24px 18px;
+    padding: 0 !important;
     transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+    /* padding: 12px 0 !important; */
 }
 
 .meal-accordion.collapsed{
@@ -22,16 +25,18 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 12px 0;
     background: transparent;
     border-radius: 8px;
+    min-height: 53px !important;
+    padding: 0 24px;
+    /* margin: 12px 0; */
 }
 
 .meal-accordion .accordion-title h4 {
     font-size: 16px;
     color: #4F3a6D;
     margin-top: 6px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
 
 }
 
@@ -46,6 +51,8 @@
 .meal-accordion .accordion-text {
     overflow: hidden;
     width: 100%;
+    margin-top: 16px;
+    padding: 0 24px 16px;
 }
 
 .meal-accordion .meal-descricao {

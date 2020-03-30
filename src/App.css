@@ -245,6 +245,14 @@ button {
   border-bottom: 1px solid #eee;
   margin-top: 18px;
 }
+
+.fit_to_parent {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+}
 /* .inner-page {
   height: 100vh - 50px;
   overflow: hidden;

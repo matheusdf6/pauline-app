@@ -3,8 +3,8 @@ import { signin } from "./auth";
 import axios from "axios";
 import Storage from "../../services/Storage";
 
-const SITE_URL = "paulinemaccari.com.br"
-// const SITE_URL = "locahost"
+const SITE_URL = "https://paulinemaccari.com.br"
+// const SITE_URL = "http://locahost"
 
 export const updateUserPass = async (username, lastPassword, password) => {
     let isUser = await testPassword(username, lastPassword);
@@ -32,7 +32,7 @@ export const updateUserPass = async (username, lastPassword, password) => {
 export const testPassword = async (username, password) => {
     try {
         const body = { username, password };
-        const result = await axios.post(`https://${SITE_URL}/wp-json/jwt-auth/v1/token`, body);
+        const result = await axios.post(`${SITE_URL}/wp-json/jwt-auth/v1/token`, body);
         let { status } = result;
         
         if( status == 200 ) {

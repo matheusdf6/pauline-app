@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
 
 import NavbarTop from "../../components/NavbarTop";
 import NavbarBottom from "../../components/NavbarBottom";
@@ -13,6 +14,7 @@ import getMonthName from "../../utils/getMonthName.js";
 import { getMetrics } from "../../api/modules/metrics";
 import { getEvolution } from "../../api/modules/evolution";
 
+import ImageViewer from "../../components/ImageViewer";
 
 export default function Profile() {
 
@@ -34,11 +36,12 @@ export default function Profile() {
         const loadMetrics = async () => {
             let response = await getMetrics();
             if( response ) {
+
                 let sorted = response.sort((a,b) => {
-                    let dateA = new Date(a.data);
-                    let dateB = new Date(b.data);
-                    return  dateB - dateA;
-                })
+                    let dateA = moment(a.data);
+                    let dateB = moment(b.data);
+                    return  dateB.diff(dateA);
+                });
 
                 setMedidas(sorted);
           
@@ -53,13 +56,13 @@ export default function Profile() {
     useEffect(() => {
         const loadEvolution = async () => {
             let response = await getEvolution();
-            console.log(response);
+
             if( response ) {
                 let sorted = response.sort((a,b) => {
-                    let dateA = new Date(a.data);
-                    let dateB = new Date(b.data);
-                    return  dateB - dateA;
-                })
+                    let dateA = moment(a.data);
+                    let dateB = moment(b.data);
+                    return  dateB.diff(dateA);
+                });
 
                 setEvolucao(sorted);
           
@@ -75,10 +78,10 @@ export default function Profile() {
 
     const renderMedidaColumn = (m) => {
         let { peso, altura, cintura, c_abdominal, braco, gluteos, data } = m;
-        let dataObj = new Date(data);
+        let dataObj = moment(data);
         return (
             <div className="ft-column">
-                <div className="ft-cell ft-head">{`${getMonthName(dataObj)}/${dataObj.getFullYear()}`}</div>
+                <div className="ft-cell ft-head">{`${getMonthName(dataObj)}/${dataObj.year()}`}</div>
                 <div className="ft-cell">{peso}kg</div>
                 <div className="ft-cell">{altura}cm</div>
                 <div className="ft-cell">{cintura}cm</div>
@@ -121,12 +124,12 @@ export default function Profile() {
                                     <>
                                         <div className="imagens">
                                             <div className="back-image-wrapper">
-                                                <div className="background-image" style={{ backgroundImage: `url(${evolucao[0].foto})` }}></div>
+                                                <ImageViewer source={evolucao[0].foto} />
                                             </div>
                                             {
                                                 evolucao.length > 1 && evolucao[1].foto ? (
                                                     <div className="back-image-wrapper">
-                                                        <div className="background-image" style={{ backgroundImage: `url(${evolucao[1].foto})` }}></div>
+                                                        <ImageViewer source={evolucao[1].foto} />
                                                     </div>
                                                 ) : ''
                                             }

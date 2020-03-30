@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import metrics, { getMetrics } from "../../api/modules/metrics";
 import getMonthName from "../../utils/getMonthName";
+import parseDate from "../../utils/parseDate";
 import { range } from 'lodash';
+import moment  from "moment";
+
 
 import  './styles.css';
 import searchIcon from "../../assets/search.png";
@@ -21,7 +24,6 @@ export default function LastMetrics() {
     useEffect(() => {
         const loadMetrics = async () => {
             let response = await getMetrics();
-            console.log(response);
             if( response ) {
                 setMedidas(response);
             } else {
@@ -92,7 +94,7 @@ export default function LastMetrics() {
 
     const renderSelectAno = () => {
         const ano_inicial = 2010;
-        let ano_atual = new Date().getFullYear();
+        let ano_atual = moment().year();
         return(
             <div className="select-container">
                 <select onChange={ e => setAno(e.target.value) } name="ano" id="ano">
@@ -166,15 +168,15 @@ export default function LastMetrics() {
 
     const filterMetrics = (m, a) => {
         return medidas.slice(1).filter((med,index) => {
-            let data = new Date(med.data);
-            if( getMonthName(data) == m && data.getFullYear() == a )
+            let data = moment(med.data);
+            if( getMonthName(data) == m && data.year() == Number(a) )
                 return true;
         });
     }
 
     const normalizeDate = (d) => {
-        let data = new Date(d);
-        return `${data.getDate()} ${ getMonthName(data) } de ${data.getFullYear()}`;
+        let data = moment(d);
+        return `${data.date()} ${ getMonthName(data) } de ${data.year()}`;
     }
     
 

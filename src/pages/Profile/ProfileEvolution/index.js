@@ -1,4 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
+import moment from "moment";
+import { useHistory } from "react-router-dom";
 
 import NavbarTop from "../../../components/NavbarTop";
 import NavbarBottom from "../../../components/NavbarBottom";
@@ -14,18 +16,20 @@ import { getEvolution, uploadEvolution } from "../../../api/modules/evolution";
 import Storage from "../../../services/Storage";
 
 
+import ImageViewer from "../../../components/ImageViewer";
+import Loader from "../../../components/Loader";
+
 export default function ProfileEvolution() {
 
+  const history = useHistory();
   const { addToast } = useToasts();
   const fileInput = useRef(null);
 
   const [ evolucao, setEvolucao ] = useState(null);
-
-  const addEvolution = () => {
-
-  }
+  const [ loading, setLoading ] = useState(false);
 
   const handleChange = (e) => {
+
       let files = e.target.files;
       var allFiles = [];
       for (var i = 0; i < files.length; i++) {
@@ -48,17 +52,23 @@ export default function ProfileEvolution() {
       } 
   }
   const onDone = async (file) => {
+    setLoading(true);
     uploadEvolution(file.base64)
       .then((response) => {
+
         let sorted = response.acf.minha_evolucao.sort((a,b) => {
-          let dateA = new Date(a.data);
-          let dateB = new Date(b.data);
-          return  dateB - dateA;
+          let dateA = moment(a.data);
+          let dateB = moment(b.data);
+          return  dateB.diff(dateA);
         })
-        setEvolucao(sorted);
+
+        setLoading(false);
         Storage.uploadUser(response);
+        window.location.reload();
+        return null;
       })
       .catch((error) => {
+        setLoading(false);
         addToast("Não foi possivel enviar a imagem. Tente novamente", { appearance: 'error' });
       })
   }
@@ -68,15 +78,16 @@ export default function ProfileEvolution() {
           let response = await getEvolution();
           if( response ) {
               let sorted = response.sort((a,b) => {
-                  let dateA = new Date(a.data);
-                  let dateB = new Date(b.data);
-                  return  dateB - dateA;
+                    let dateA = moment(a.data);
+                    let dateB = moment(b.data);
+                    return  dateB.diff(dateA);
               })
+              console.log(sorted);
 
               setEvolucao(sorted);
         
           } else {
-            addToast("Não foi possivel enviar a imagem. Tente novamente", { appearance: 'error' });
+            addToast("Não foi possivel carregar as imagens. Tente novamente", { appearance: 'error' });
             setEvolucao(null);
           }
       }
@@ -84,8 +95,8 @@ export default function ProfileEvolution() {
   }, []);
 
   const normalizeDate = (d) => {
-    let data = new Date(d);
-    return `${data.getDate()}/${ twoDigit(data.getMonth() + 1) }/${data.getFullYear()}`;
+    let data = moment(d);
+    return `${twoDigit(data.date())}/${ twoDigit(data.month() + 1) }/${data.year()}`;
   }
 
   const twoDigit = (num) => {
@@ -97,6 +108,7 @@ export default function ProfileEvolution() {
     <>
         <NavbarTop name="Perfil" withGoBack={true} withMenu={false}></NavbarTop>
         <div className="profile-evolution">
+            {  loading ? (<div className="loading-top"><Loader width={50} /></div>) : '' }
             <div className="header">
               <h2>Minha evolução</h2>
             </div>
@@ -108,8 +120,9 @@ export default function ProfileEvolution() {
                   </div>
                   {
                     evolucao ? evolucao.map((evo, key) => (
-                      <div className="back-image-wrapper">
-                        <div className="background-image" style={{ backgroundImage: `url(${evo.foto})` }}></div>
+                      <div key={key} className="back-image-wrapper">
+                        <ImageViewer source={evo.foto} />
+                        {/* <img src={evo.foto} style={{width: '100%', height: "100%", objectFit: "cover", objectPosition: "cemter" }}/> */}
                         <div className="data-tag">{normalizeDate(evo.data)}</div>
                       </div>
                     )) : ''

@@ -24,11 +24,17 @@ export const getRecipes = async (pageOffset = 0) => {
   }
 };
 
-export const getStoredRecipes = () => {
-  let response = Storage.getLocalStorage("recipes");
-  if(response) {
-    return JSON.parse(response);
+export const getStoredFirstRecipes = async () => {
+  let stored = Storage.getLocalStorage("recipes");
+  if(stored) {
+    return JSON.parse(stored);
   }
+
+  let response = await getRecipes();
+  if(response) {
+    return response
+  } 
+
   return null
 }
 
@@ -83,4 +89,4 @@ export const getRecipe = async (id) => {
   }
 
 }
-export default { getRecipes, getRecipe, getRecipeCategories, getRecipesCategory };
+export default { getRecipes, getRecipe, getRecipeCategories, getRecipesCategory, getStoredFirstRecipes };

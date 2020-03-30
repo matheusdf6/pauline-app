@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useToasts } from "react-toast-notifications";
 import "./styles.css";
-
+import moment from "moment";
 import { Link, useHistory } from "react-router-dom";
 import { signup } from "../../api/modules/auth";
 import Loader from "../../components/Loader";
@@ -40,11 +40,13 @@ export default function Register() {
             return false;
         }
 
+        let transformed_date = moment(data);
+
         setLoading(true);
         let result = await signup({
             username: usuario,
             password: senha,
-            data_nascimento: data,
+            data_nascimento: transformed_date.format("YYYY-MM-DD"),
             sexo: sexo,
             email,
             name: nome

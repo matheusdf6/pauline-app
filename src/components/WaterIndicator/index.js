@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import _ from "lodash";
+import moment  from "moment";
 
 import Storage from "../../services/Storage";
-import minsToMidnight from "../../utils/minsToMidnight";
 
 import "./styles.css";
 import drink from "../../assets/drink.png";
@@ -18,21 +18,19 @@ export default function WaterIndicator() {
   }
 
   const getCupsOfTheDay = () => {
-      let today = new Date();
+      let today = moment();
       let stored = Storage.getLocalStorage("cups");
       if( stored ) {
-        let date = new Date(stored.date);
-        if(date.getMonth() === today.getMonth() && 
-           date.getDate() === today.getDate() && 
-           date.getFullYear() === today.getFullYear() ) {
+        let date = moment(stored.date);
+        if( date.isSame(today, 'day') ) {
           setCups(stored.cups);
         } else {
           setCups(0);
-          Storage.setLocalStorage("cups", { cups: 0, date: today }, 1440);
+          Storage.setLocalStorage("cups", { cups: 0, date: today.format("YYYY-MM-DD") }, 1440);
         }
       } else {
         setCups(0);
-        Storage.setLocalStorage("cups", { cups: 0, date: today }, 1440);
+        Storage.setLocalStorage("cups", { cups: 0, date: today.format("YYYY-MM-DD") }, 1440);
       }
   }
 
@@ -40,9 +38,7 @@ export default function WaterIndicator() {
 
   const handleClick = (index) => {
     setCups(index + 1);
-
-    let today = new Date();
-    Storage.setLocalStorage("cups", { cups: index + 1, date: today }, 1440);
+    Storage.setLocalStorage("cups", { cups: index + 1, date: moment().format("YYYY-MM-DD") }, 1440);
 
   }
 
@@ -56,7 +52,7 @@ export default function WaterIndicator() {
         }
       </div>
       <div className="message">
-        { getLastCups() > 0 ? ('Falta' + ( getLastCups() == 1 ? ' ' : 'm ') + getLastCups() + ' copo' + (getLastCups() != 1 ? 's, ' : ', ') + 'vamos lá') : ('Deu')  } 
+        { getLastCups() > 0 ? ('Falta' + ( getLastCups() == 1 ? ' ' : 'm ') + getLastCups() + ' copo' + (getLastCups() != 1 ? 's, ' : ', ') + 'vamos lá') : ('Parabéns! Você conseguiu!')  } 
       </div>
     </div>
   );

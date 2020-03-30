@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const months = [
     'Janeiro',
     'Fevereiro',
@@ -14,7 +16,9 @@ const months = [
 ]
 
 const getMonthName = (data) => {
-    if( typeof data.getMonth === 'function' ) {
+    if(moment.isMoment(data)) {
+        return months[data.month()];
+    } else if( typeof data.getMonth === 'function' ) {
         return months[data.getMonth()];
     } else if( Date.parse(data) ) {
         let dataObj = new Date(data);

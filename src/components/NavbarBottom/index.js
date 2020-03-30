@@ -16,6 +16,12 @@ export default function NavbarBottom() {
 
   const { addMessage } = useNotification();
 
+    const goToWhats = () => {
+        window.location.href = "https://api.whatsapp.com/send?phone=5548996601926&text=Ol%C3%A1%2C%20gostaria%20de%20obter%20ajuda";
+        return null
+    } 
+
+
   const handleClick = () => {
       let tip = Storage.getOneTip();
       console.log(tip);
@@ -26,8 +32,9 @@ export default function NavbarBottom() {
               '',
               tip[0].tip.acf.texto,
               'Ok',
-              '',
-              'Ainda preciso de ajuda'
+              null,
+              'Ainda preciso de ajuda',
+              null
           );
       } else {
           addMessage(
@@ -37,7 +44,8 @@ export default function NavbarBottom() {
               'Vamos te ajudar! Envie um whats pra nutri',
               'Mandar mensagem',
               '',
-              'Enviar depois'
+              'Enviar depois',
+              goToWhats
           );
 
       }

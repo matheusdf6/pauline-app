@@ -21,6 +21,11 @@
     justify-content: center;
 }
 
+
+.navbar-top.with-logo img {
+    max-width: 74px;
+}
+
 .navbar-top .goback {
     position: absolute;
     left: 16px;

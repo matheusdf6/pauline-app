@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import recipes, { getRecipes, getRecipeCategories } from "../../../api/modules/recipes";
+import recipes, { getStoredFirstRecipes, getRecipeCategories } from "../../../api/modules/recipes";
 import { useHistory } from "react-router-dom";
 
 import "./styles.css";
@@ -26,7 +26,7 @@ export default function MyMenuRecipes() {
 
   useEffect(() => {
     const getPageRecipes = async () => {
-      let resultReceitas = await getRecipes();
+      let resultReceitas = await getStoredFirstRecipes();
       setReceitas( resultReceitas ? resultReceitas : []); 
     }
     getPageRecipes();
