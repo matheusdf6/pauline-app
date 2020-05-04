@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import "./styles.css";
 import recipes from '../../api/modules/recipes';
+import decodeSpecialChars from "../../utils/decodeSpecialChars";
 
 export default function RecipeCard({ recipe }) {
     const history = useHistory();
@@ -21,7 +22,7 @@ export default function RecipeCard({ recipe }) {
                 <span className="card-tag">{ recipe.category ? recipe.category.name : "Sem categoria" }</span>
             </div>
             <div className="card-text-title">
-                <h3>{ recipe.title }</h3>
+                <h3>{ decodeSpecialChars(recipe.title) }</h3>
             </div>
         </div>
     </a>

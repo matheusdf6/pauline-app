@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getRecipe } from "../../../../api/modules/recipes";
 import { useHistory } from "react-router-dom";
+import decodeSpecialChars from "../../../../utils/decodeSpecialChars";
 
 import NavbarTop from "../../../../components/NavbarTop";
 import NavbarBottom from "../../../../components/NavbarBottom";
@@ -48,8 +49,8 @@ export default function MyMenuRecipe({ match }) {
                 <div className="recipe-single">
                     <img src={recipe.image} alt={recipe.title}/>
                     <div className="recipe-single-text">
-                        <h2>{recipe.title}</h2>
-                        <span className="single-tag">{recipe.category ? recipe.category.name : "Sem categoria"}</span>
+                        <h2>{decodeSpecialChars(recipe.title)}</h2>
+                        <span className="single-tag">{ recipe.category ? recipe.category.name : "Sem categoria" }</span>
                         {
                             recipe.body ? (
                                 <div className="single-body" dangerouslySetInnerHTML={{__html: recipe.body.replace(/&lt;/g, '<')

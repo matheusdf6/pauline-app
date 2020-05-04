@@ -17,6 +17,7 @@ export const getRecipes = async (pageOffset = 0) => {
       body: recipe.content.rendered,
     }));
   
+    console.log(recipesArray);
     Storage.setLocalStorage("recipes", JSON.stringify(recipesArray));
     return recipesArray;  
   } catch {

@@ -24,7 +24,6 @@ export default function NavbarBottom() {
 
   const handleClick = () => {
       let tip = Storage.getOneTip();
-      console.log(tip);
       if( tip ) {
           addMessage(
               smile,
@@ -34,7 +33,7 @@ export default function NavbarBottom() {
               'Ok',
               null,
               'Ainda preciso de ajuda',
-              null
+              handleClick
           );
       } else {
           addMessage(
@@ -43,9 +42,9 @@ export default function NavbarBottom() {
               '',
               'Vamos te ajudar! Envie um whats pra nutri',
               'Mandar mensagem',
-              '',
+              goToWhats,
               'Enviar depois',
-              goToWhats
+              null
           );
 
       }

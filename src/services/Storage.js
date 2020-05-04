@@ -60,7 +60,7 @@ function storeTips(tips) {
 
 function getOneTip() {
     let tiplist = getLocalStorage("tips");
-    if(tiplist.already_seen !== 'undefined' && tiplist.already_seen.length < 5) {
+    if(tiplist.already_seen != null && tiplist.already_seen.length < 5) {
         let lgth = tiplist.tips.length - 1;
         let rand = getRandomValue(lgth, tiplist.already_seen, 0);
         let choose = tiplist.tips.filter(e => e.index == rand);

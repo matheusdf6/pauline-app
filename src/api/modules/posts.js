@@ -22,7 +22,7 @@ export const getPosts = async (pageOffset = 0) => {
 export const getPostsCategories = async (pageOffset = 0) => {
   try {
     const categories = await api.get('categories', {
-      params: { offset: pageOffset, per_page: 100 },
+      params: { offset: pageOffset, per_page: 100, hide_empty: true },
     });
   
     return categories.filter(c => c.name.toLowerCase() != "sem categoria" );  

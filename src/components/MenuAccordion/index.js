@@ -1,4 +1,5 @@
 import React from 'react';
+import replaceNewLine from "../../utils/replaceNewLine";
 
 import './styles.css';
 
@@ -8,6 +9,8 @@ export default function MenuAccordion({ meal, collapsed, onClick }) {
   
   const { refeicao, descricao, opcoes } = meal;
   
+  console.log(descricao);
+  console.log(replaceNewLine(descricao));
   return (
     <div className={collapsed ? "meal-accordion collapsed" : "meal-accordion"}>
       <div className="accordion-title" onClick={ onClick }>
@@ -16,13 +19,13 @@ export default function MenuAccordion({ meal, collapsed, onClick }) {
       </div>
       <div className="accordion-text">
         <div className="meal-descricao">
-          {descricao}
+          {replaceNewLine(descricao)}
         </div>
         {
           opcoes ? opcoes.map((op, index) => (
             <div key={index} className="opcao">
               <h5>{op.titulo}</h5>
-              <p>{op.descricao}</p>
+              <p>{replaceNewLine(op.descricao)}</p>
             </div>
           )) : ''
 

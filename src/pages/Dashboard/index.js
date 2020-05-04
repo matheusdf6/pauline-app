@@ -18,6 +18,7 @@ import "./styles.css";
 import { useHistory } from "react-router-dom";
 import Storage from "../../services/Storage";
 import TipsManager from "../../services/TipsManager";
+import decodeSpecialChars from "../../utils/decodeSpecialChars";
 
 import smile from "../../assets/tips.png"
 import sad from "../../assets/embarrassed.png"
@@ -55,9 +56,9 @@ export default function Dashboard() {
         if( tip ) {
             addMessage(
                 smile,
-                tip[0].tip.title.rendered,
+                decodeSpecialChars(tip[0].tip.title.rendered),
                 '',
-                tip[0].tip.acf.texto,
+                decodeSpecialChars(tip[0].tip.acf.texto),
                 'Ok',
                 null,
                 'Ainda preciso de ajuda',
@@ -93,6 +94,7 @@ export default function Dashboard() {
                         </div>
                     </div>
                     <MyMenuDash></MyMenuDash>
+                    <PostsDash />
                 </div>
                 <NavbarBottom></NavbarBottom>
             </div>

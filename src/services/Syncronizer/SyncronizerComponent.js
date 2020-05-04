@@ -6,6 +6,7 @@ import moment from "moment";
 import Storage from "../Storage";
 import { syncChanges } from "../../api/modules/synchronizer";
 import useNotification from "../Notification/useNotification"
+import decodeSpecialChars from "../../utils/decodeSpecialChars";
 
 import novaReceita from "../../assets/nova-receita.png";
 import novaAgenda from "../../assets/nova-agenda.png";
@@ -59,12 +60,14 @@ export default function SynchronizerComponent() {
     }
 
     const checkNewRecipe = (new_recipes, stored) => {
+        console.log(new_recipes);
+        console.log(stored);
         if( stored ) {
             let recipes = JSON.parse(stored);
             if(new_recipes.length > recipes.length) {
-                let receita = new_recipes.slice(1);
-                Storage.setLocalStorage("recipes", recipes, 10800);
-                newRecipeNotification(receita[0]);
+                let receita = new_recipes.shift();
+                // Storage.setLocalStorage("recipes", JSON.stringify(new_recipes), 10800);
+                newRecipeNotification(receita);
                 return true;
             }
             return false;
@@ -81,7 +84,7 @@ export default function SynchronizerComponent() {
             novaReceita,
             "Receitinha nova!!",
             '',
-            receita.title,
+            decodeSpecialChars(receita.title),
             "Confira",
             () => goToRecipe(receita),
             "Ver depois",
@@ -167,9 +170,6 @@ export default function SynchronizerComponent() {
             let last_date = moment(sorted_new[0].data)
       
             if(last_date.diff(sorted_date) > 0) {
-                let novo_usuario = Storage.getStoredUser();
-                novo_usuario.acf.cardapios = new_menus;
-                Storage.uploadUser(novo_usuario);
                 newMenuNotification(sorted_new[0]);
                 return true;
             }
@@ -182,9 +182,6 @@ export default function SynchronizerComponent() {
                 return  dateB.diff(dateA);
             });
 
-            let novo_usuario = Storage.getStoredUser();
-            novo_usuario.acf.cardapios = new_menus;
-            Storage.uploadUser(novo_usuario);
             newMenuNotification(sorted_new[0]);
             return true;
         }

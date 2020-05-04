@@ -7,8 +7,8 @@ export const getOrientacoes = async () => {
     let cached = Storage.getLocalStorage("docs");
     let docs = cached ? cached : null;
 
-    if( docs && docs.lista_de_compras ) {
-        return docs.lista_de_compras;
+    if( docs && docs.orientacoes_gerais ) {
+        return docs.orientacoes_gerais;
     }
 
     const response = await api.get(`/pages/${PAINEL_PAGE_ID}`);

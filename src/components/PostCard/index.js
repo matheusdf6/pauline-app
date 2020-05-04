@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
+import decodeSpecialChars from "../../utils/decodeSpecialChars";
 
 import "./styles.css";
 
 export default function PostCard({ post }) {
     const history = useHistory();
-
-    useEffect(()=> {
-        console.log(post);
-    },[]);
 
     const handleClick = () => {
         history.push(`/blog/${ post.id }`);
@@ -25,7 +22,7 @@ export default function PostCard({ post }) {
                 <span className="read-time">{ post.tempo ? `${post.tempo}min de leitura` : ''}</span>
             </div>
             <div className="card-text-title">
-                <h3>{ post.title }</h3>
+                <h3>{ decodeSpecialChars(post.title) }</h3>
             </div>
         </div>
     </a>

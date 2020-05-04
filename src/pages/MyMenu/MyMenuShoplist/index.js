@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NavbarTop from "../../../components/NavbarTop";
 import NavbarBottom from "../../../components/NavbarBottom";
 import PdfWrapper from "../../../components/PdfWrapper";
-import { getOrientacoes } from "../../../api/modules/pdfs";
+import { getLista } from "../../../api/modules/pdfs";
 
 import download from "../../../assets/download.png";
 
@@ -15,9 +15,8 @@ export default function MyMenuShoplist() {
 
   useEffect(() => {
     const loadShoplist = async () => {
-      let response = await getOrientacoes();
+      let response = await getLista();
       if( response ) {
-        console.log(response);
         setDoc(response);
       } else {
         setErro("Não foi possivel carregar o PDF");

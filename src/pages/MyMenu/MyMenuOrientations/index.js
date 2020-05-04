@@ -4,7 +4,6 @@ import NavbarBottom from "../../../components/NavbarBottom";
 import PdfWrapper from "../../../components/PdfWrapper";
 import { getOrientacoes } from "../../../api/modules/pdfs";
 
-import testPdf from "../../../assets/Registro de Territorios.pdf";
 import download from "../../../assets/download.png";
 
 import "./styles.css";
@@ -18,7 +17,6 @@ export default function MyMenuOrientations() {
     const loadOrientacoes = async () => {
       let response = await getOrientacoes();
       if( response ) {
-        console.log(response);
         setDoc(response);
       } else {
         setErro("Não foi possivel carregar o PDF");

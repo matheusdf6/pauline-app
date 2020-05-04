@@ -58,16 +58,22 @@
 .meal-accordion .meal-descricao {
     font-size: 16px;
     margin-bottom: 16px;
+    white-space: pre-wrap;
 }
 
 .meal-accordion .opcao {
     font-size: 16px;
     line-height: 18px;
+
 }
 
 .meal-accordion .opcao h5 {
     color: #4F3a6D;
     margin-bottom: 6px;
+}
+
+.meal-accordion .opcao p {
+    white-space: pre-wrap;
 }
 
 .meal-accordion .opcao:not(:last-of-type) {

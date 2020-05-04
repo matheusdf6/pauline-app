@@ -15,6 +15,7 @@ export const getNewMenus = async () => {
         let user = Storage.getStoredUser();
         const response = await api.get(`/users/${user.id}`);
         if( response ) {
+            Storage.uploadUser(response);
             return response.acf.cardapios;
         }    
     } catch {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getSinglePost } from "../../../api/modules/posts";
+import decodeSpecialChars from "../../../utils/decodeSpecialChars";
 
 import NavbarTop from "../../../components/NavbarTop";
 import NavbarBottom from "../../../components/NavbarBottom";
@@ -27,7 +28,7 @@ export default function BlogPost({ match }) {
                 <div className="post-single">
                     <img src={post.image} alt={post.title}/>
                     <div className="post-single-text">
-                        <h2>{post.title}</h2>
+                        <h2>{decodeSpecialChars(post.title)}</h2>
                         <div className="info">
                             <span className="single-tag">{post.category ? post.category.name : "Sem categoria"}</span>
                             <span className="read-time">{ post.tempo}min de leitura</span>

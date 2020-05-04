@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import recipes, { getStoredFirstRecipes, getRecipeCategories } from "../../../api/modules/recipes";
 import { useHistory } from "react-router-dom";
 
