@@ -6,7 +6,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "blueimp-load-image": "^2.26.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "pdf-viewer-reactjs": "^2.0.2",
     "react": "^16.13.0",
