@@ -71,3 +71,10 @@
 .table-container table tbody tr td:not(:first-of-type){
     border-left: 1px solid #eee;
 }
+
+
+@media only screen and (max-width: 380px) {
+    .profile-metrics .metrics-registries {
+        padding: 0 calc(-19.333px + 11.667vw); /* 25px (3.8) -> 18px (3.2) */
+    }
+}

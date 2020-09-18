@@ -46,7 +46,6 @@ export default function SynchronizerComponent() {
                     isNewSchedule = checkNewSchedule(result.schedules, storedSchedules);    
                 }
 
-            
                 if( isNewMenu || isNewRec || isWaterCheck || isNewSchedule ) {
                     startPipeline(true);
                 }

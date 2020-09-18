@@ -156,7 +156,7 @@ export default function Profile() {
                                             <div className="ft-cell">Altura</div>
                                             <div className="ft-cell">Cintura</div>
                                             <div className="ft-cell">Braço</div>
-                                            <div className="ft-cell">Glúteos</div>
+                                            <div className="ft-cell gluteos">Glúteos / Peitoral</div>
                                         </div>
                                         {
                                             medidas ? renderMedidaColumn(medidas[0]) : ''

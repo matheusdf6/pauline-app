@@ -8,8 +8,12 @@ export default function ImageViewer({ source }) {
     useEffect(() => {
         loadimage(source, (img) => {
             console.log(img)
-            img.className = 'fit_to_parent';
-            imageCanvas.current.appendChild(img);
+            if( img.type === 'error' ) {
+                
+            } else {
+                img.className = 'fit_to_parent';
+                imageCanvas.current.appendChild(img);
+            }
         }, {  orientation: true });
     }, []);
 

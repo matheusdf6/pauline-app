@@ -25,7 +25,7 @@ export default function NextAppoitment() {
               let data = moment(inicio);
               let now = moment();
               if(now.diff(data) < 0) {
-                setSchedule(`${twoDigit(data.date())}/${ twoDigit(data.month()) } - ${twoDigit(data.hours())}:${twoDigit(data.minute())}`);
+                setSchedule(`${twoDigit(data.date())}/${ twoDigit(data.month() + 1) } - ${twoDigit(data.hours())}:${twoDigit(data.minute())}`);
                 return;
               }
             } 

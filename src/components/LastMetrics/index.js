@@ -126,7 +126,7 @@ export default function LastMetrics() {
                     <span className="accordion-label">Braço</span><span className="valor">{braco} cm</span>
                 </div>
                 <div className="accordion-row">
-                    <span className="accordion-label">Glúteos</span><span className="valor">{gluteos} cm</span>
+                    <span className="accordion-label">Glúteos/Peitoral</span><span className="valor">{gluteos} cm</span>
                 </div>
             </>
         ) 
@@ -149,7 +149,7 @@ export default function LastMetrics() {
                     <span className="accordion-label">Braço</span><span className="valor">{braco} cm</span>
                 </div>
                 <div className="accordion-row">
-                    <span className="accordion-label">Glúteos</span><span className="valor">{gluteos} cm</span>
+                    <span className="accordion-label">Glúteos/Peitoral</span><span className="valor">{gluteos} cm</span>
                 </div>
             </>
         ) 
